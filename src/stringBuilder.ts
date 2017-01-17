@@ -1,11 +1,11 @@
-class stringProcessor{
+class StringBuilder{
     private data: string;
     constructor(input: string){
-        input = data;
+        this.data = input;
     }
 
     public getString(): string{
-        return data;
+        return this.data;
     }
 
     public setString(data:string){
@@ -14,12 +14,23 @@ class stringProcessor{
 
     public reverse(): void{
         let chars: string[] = this.data.split('');
-        for(var i = 1; i< chars.length ; i++){
+        let end = chars.length - 1;
+        for(var i = 0; i < chars.length / 2; i++){
             let cTmp:string = chars[i];
-            chars[i] = chars[chars.length -1];
-            chars[chars.length -1] = cTmp;
+            chars[i] = chars[chars.length - 1 - i];
+            chars[chars.length - 1 - i] = cTmp;
         }
 
         this.data = chars.join('');
     }
 }
+
+let processor:StringBuilder = new StringBuilder('woah');
+console.log(processor.getString());
+processor.reverse();
+console.log(processor.getString());
+
+processor.setString('hello');
+console.log(processor.getString());
+processor.reverse();
+console.log(processor.getString());
